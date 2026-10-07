@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaStore &mdash; Next-Gen E-Commerce Product Platform</title>
+    <meta name="description" content="Discover premium lifestyle products curated with precision. Powered by our enterprise Product Service.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+    <!-- Background glow shapes -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="mainNavbar">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m7.5 4.27 9 5.15"></path>
+                        <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path>
+                        <path d="m3.3 7 8.7 5 8.7-5"></path>
+                        <path d="M12 22V12"></path>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">NovaStore</span>
+                    <span class="brand-badge">PRODUCT SERVICE</span>
+                </div>
+            </div>
+
+            <div class="search-bar-wrapper">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search products, gear, electronics..." autocomplete="off">
+                <button id="clearSearchBtn" class="clear-search-btn" title="Clear search" style="display: none;">&times;</button>
+            </div>
+
+            <div class="nav-actions">
+                <div class="api-status-pill" id="apiStatusPill" title="Product Service Backend Status">
+                    <span class="status-dot"></span>
+                    <span class="status-label" id="apiStatusText">Connecting...</span>
+                </div>
+
+                <button class="icon-btn theme-toggle" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle dark/light theme">
+                    <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+
+                <button class="primary-btn add-product-trigger" id="openAddModalBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>New Product</span>
+                </button>
+
+                <div class="cart-trigger" id="cartTrigger" title="Shopping Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="8" cy="21" r="1"></circle>
+                        <circle cx="19" cy="21" r="1"></circle>
+                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                    </svg>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="sparkle">✦</span> Spring Boot 4 REST API & Catalog
+                </div>
+                <h1 class="hero-title">
+                    Discover Curated <span class="gradient-text">E-Commerce</span> Collections
+                </h1>
+                <p class="hero-subtitle">
+                    Explore high-performance gear, modern tech, and essentials managed in real-time via the Product Microservice.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <span class="stat-num" id="statTotalCount">--</span>
+                        <span class="stat-lbl">Products In Catalog</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-box">
+                        <span class="stat-num" id="statCategoriesCount">--</span>
+                        <span class="stat-lbl">Curated Categories</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-box">
+                        <span class="stat-num">&lt; 15ms</span>
+                        <span class="stat-lbl">API Latency</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Controls: Category Pills & Sorting -->
+        <section class="catalog-controls">
+            <div class="category-tabs" id="categoryTabs">
+                <button class="category-tab active" data-category="all">
+                    <span>All Products</span>
+                    <span class="tab-count" id="countAll">12</span>
+                </button>
+                <!-- Dynamic categories populated via JS -->
+            </div>
+
+            <div class="controls-right">
+                <div class="sort-selector">
+                    <label for="sortBySelect" class="sort-label">Sort by:</label>
+                    <select id="sortBySelect" class="custom-select">
+                        <option value="featured">Featured</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="rating-desc">Highest Rated</option>
+                        <option value="name-asc">Alphabetical</option>
+                    </select>
+                </div>
+                <button class="refresh-btn" id="refreshCatalogBtn" title="Reload from API">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                        <path d="M21 3v5h-5"></path>
+                        <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                        <path d="M3 21v-5h5"></path>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Products Grid -->
+        <section class="products-section">
+            <div class="loading-state" id="loadingState">
+                <div class="spinner"></div>
+                <p>Querying product catalog from service...</p>
+            </div>
+
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">🔍</div>
+                <h3>No products matched your criteria</h3>
+                <p>Try refining your search term or select another category.</p>
+                <button class="secondary-btn" id="resetFiltersBtn">Reset Filters</button>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Product cards injected by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal: Add New Product -->
+    <div class="modal-backdrop" id="addProductModal" aria-hidden="true">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Create New Product</h2>
+                    <p class="modal-subtitle">Directly persists into Product Service database via POST /api/products</p>
+                </div>
+                <button class="modal-close" id="closeAddModalBtn" aria-label="Close modal">&times;</button>
+            </div>
+            <form id="addProductForm" novalidate>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="pName">Product Name <span class="required">*</span></label>
+                        <input type="text" id="pName" placeholder="e.g. Sony WH-1000XM5 Wireless Headphones" required minlength="2" maxlength="200">
+                        <span class="field-error" id="err-name"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pCategory">Category <span class="required">*</span></label>
+                        <input type="text" id="pCategory" list="categoriesDatalist" placeholder="e.g. Electronics" required>
+                        <datalist id="categoriesDatalist">
+                            <option value="Electronics">
+                            <option value="Fashion">
+                            <option value="Home & Living">
+                            <option value="Accessories">
+                        </datalist>
+                        <span class="field-error" id="err-category"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pPrice">Price (USD) <span class="required">*</span></label>
+                        <div class="input-prefix-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="pPrice" placeholder="199.99" step="0.01" min="0.01" required>
+                        </div>
+                        <span class="field-error" id="err-price"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pStock">Stock Quantity <span class="required">*</span></label>
+                        <input type="number" id="pStock" placeholder="50" min="0" required value="25">
+                        <span class="field-error" id="err-stockQuantity"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pRating">Initial Rating (0.0 - 5.0)</label>
+                        <input type="number" id="pRating" placeholder="4.8" step="0.1" min="0" max="5" value="4.8">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="pImage">Image URL (Unsplash or direct link)</label>
+                        <input type="url" id="pImage" placeholder="https://images.unsplash.com/photo-...">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="pDescription">Description</label>
+                        <textarea id="pDescription" rows="3" placeholder="Highlight key specifications, features, and materials..."></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="secondary-btn" id="cancelAddModalBtn">Cancel</button>
+                    <button type="submit" class="primary-btn" id="submitProductBtn">
+                        <span class="btn-text">Publish Product</span>
+                        <div class="btn-spinner" style="display: none;"></div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Product Quick View Details -->
+    <div class="modal-backdrop" id="quickViewModal" aria-hidden="true">
+        <div class="modal-card quick-view-card">
+            <button class="modal-close" id="closeQuickViewBtn" aria-label="Close modal">&times;</button>
+            <div class="quick-view-body" id="quickViewContent">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
